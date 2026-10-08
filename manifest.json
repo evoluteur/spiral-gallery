@@ -1,0 +1,24 @@
+{
+  "name": "Spiral Gallery",
+  "short_name": "Spirals",
+  "description": "The logarithmic, Archimedean, Fermat and Fibonacci spirals side by side, with the nautilus, the ram's horn and the galaxy.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1a212d",
+  "theme_color": "#1a212d",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "spiral-gallery",
+  "version": "1.0.0",
+  "description": "Spiral Gallery: the logarithmic, Archimedean, Fermat and Fibonacci spirals drawn side by side on the same scale, with the nautilus, the ram's horn and the galaxy, each with its growth per turn and its angle to the radius.",
+  "repository": "github:evoluteur/spiral-gallery",
+  "homepage": "https://evoluteur.github.io/spiral-gallery/",
+  "copyright": "(c) 2026 Olivier Giulieri",
+  "author": "Olivier Giulieri (https://evoluteur.github.io/)",
+  "license": "MIT",
+  "keywords": [
+    "spiral",
+    "logarithmic-spiral",
+    "archimedean-spiral",
+    "fermat-spiral",
+    "fibonacci-spiral",
+    "golden-spiral",
+    "equiangular-spiral",
+    "spira-mirabilis",
+    "nautilus",
+    "phyllotaxis",
+    "pitch-angle",
+    "sacred-geometry",
+    "esoterica",
+    "svg",
+    "pwa",
+    "javascript"
+  ],
+  "scripts": {
+    "sync:themes": "sh scripts/sync-omg-themes.sh"
+  }
+}

@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-063933E3C2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-063933E3C2");
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Spiral Gallery: Logarithmic, Archimedean, Fermat and Fibonacci, Side by
+      Side
+    </title>
+    <meta
+      name="description"
+      content="Spiral Gallery: the logarithmic, Archimedean, Fermat and Fibonacci spirals drawn side by side on the same scale, with the nautilus, the ram's horn and the galaxy, each with its growth per turn and its angle to the radius."
+    />
+    <meta
+      name="keywords"
+      content="spiral, logarithmic spiral, archimedean spiral, fermat spiral, fibonacci spiral, golden spiral, equiangular spiral, spira mirabilis, nautilus shell, ram horn, galaxy arms, pitch angle, phyllotaxis, sacred geometry, svg"
+    />
+    <meta name="author" content="Olivier Giulieri" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://evoluteur.github.io/spiral-gallery/" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <meta name="theme-color" content="#1a212d" />
+    <meta property="og:site_name" content="Evoluteur" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Spiral Gallery" />
+    <meta
+      property="og:description"
+      content="The logarithmic, Archimedean, Fermat and Fibonacci spirals side by side, with the nautilus, the ram's horn and the galaxy."
+    />
+    <meta property="og:url" content="https://evoluteur.github.io/spiral-gallery/" />
+    <meta
+      property="og:image"
+      content="https://evoluteur.github.io/spiral-gallery/spiral-gallery.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "Spiral Gallery",
+        "description": "The logarithmic, Archimedean, Fermat and Fibonacci spirals side by side, with the nautilus, the ram's horn and the galaxy.",
+        "url": "https://evoluteur.github.io/spiral-gallery/",
+        "codeRepository": "https://github.com/evoluteur/spiral-gallery",
+        "license": "https://github.com/evoluteur/spiral-gallery/blob/main/LICENSE",
+        "programmingLanguage": "JavaScript",
+        "author": {
+          "@type": "Person",
+          "name": "Olivier Giulieri",
+          "url": "https://evoluteur.github.io/"
+        }
+      }
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Overpass"
+    />
+    <link id="omg-core-css" rel="stylesheet" href="css/core.css" />
+    <script>
+      // Themes (dark, light, evol-blue) are copies of omg-themes (npm run sync:themes);
+      // set OMG_THEMES_BASE to "https://evoluteur.github.io/omg-themes/" to link the hosted ones instead.
+      window.OMG_THEMES_BASE = "";
+      window.OMG_DEFAULT_THEME = "dark";
+      (function () {
+        var t = window.OMG_DEFAULT_THEME;
+        try {
+          t = localStorage.getItem("omg-theme") || t;
+        } catch (e) {}
+        if (t !== "dark" && t !== "light" && t !== "evol-blue")
+          t = window.OMG_DEFAULT_THEME;
+        document.documentElement.setAttribute("data-theme", t);
+        // written here (not in the markup) so the saved theme loads before first paint
+        document.write(
+          '<link id="omg-theme-css" rel="stylesheet" href="' +
+            window.OMG_THEMES_BASE +
+            "css/themes/" +
+            t +
+            "/" +
+            t +
+            '.css" />',
+        );
+      })();
+    </script>
+    <link id="omg-density-css" rel="stylesheet" href="css/densities.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/spirals.css" />
+
+    <script src="js/omg.js"></script>
+    <script src="js/spirals.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        addEventListener("load", () =>
+          navigator.serviceWorker.register("sw.js"),
+        );
+      }
+    </script>
+  </head>
+
+  <body
+    onload="
+      setupPage('home');
+      initSpirals();
+    "
+    id="omg-body"
+  >
+    <div id="omg-header">
+      <h1>Spiral Gallery</h1>
+      <div id="omg-header-tools">
+        <div id="omg-theme-picker"></div>
+        <a
+          id="omg-github"
+          href="https://github.com/evoluteur/spiral-gallery"
+          target="_blank"
+          rel="noopener"
+          title="Spiral Gallery on GitHub"
+          aria-label="Spiral Gallery on GitHub"
+          ><svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+            /></svg
+        ></a>
+      </div>
+    </div>
+    <noscript
+      ><p class="tagline">
+        Spiral Gallery draws with JavaScript. Enable it to see the spirals.
+      </p></noscript
+    >
+    <h2>Four spirals, and the three that nature draws</h2>
+    <div class="content">
+      <p class="tagline">
+        Every curve here is scaled so that it ends on the same circle, which
+        leaves only one thing to compare: how it got there. The logarithmic
+        spiral meets every radius at the same angle, so it can grow without
+        changing shape &mdash; which is why the shell, the horn and the galaxy
+        are all drawn with that one. The Archimedean and Fermat spirals cannot:
+        their angle creeps toward a right angle and the outer turns flatten into
+        circles. The Fibonacci spiral, meanwhile, is a chain of quarter circles
+        doing an impression of the golden one.
+      </p>
+
+      <div class="panel tools">
+        <div class="tool">
+          <h3>Show</h3>
+          <div class="chips" id="view-chips" role="group" aria-label="View"></div>
+          <div class="chips" id="look-chips" role="group" aria-label="Colors"></div>
+        </div>
+
+        <div class="tool">
+          <h3>Drawing</h3>
+          <div class="ctl">
+            <label for="turns">How far they go</label
+            ><span class="val" id="turns-val"></span>
+            <input type="range" id="turns" min="1" max="8" step="0.5" />
+          </div>
+          <div class="ctl">
+            <label for="growth">Logarithmic growth</label
+            ><span class="val" id="growth-val"></span>
+            <input type="range" id="growth" min="1.1" max="8" step="0.1" />
+          </div>
+          <div class="ctl">
+            <label for="width">Line width</label
+            ><span class="val" id="width-val"></span>
+            <input type="range" id="width" min="1" max="8" step="1" />
+          </div>
+        </div>
+
+        <div class="tool">
+          <h3>Mark up</h3>
+          <label class="opt"
+            ><input type="checkbox" id="o-marks" /> Each turn, crossing the
+            ray</label
+          >
+          <label class="opt"
+            ><input type="checkbox" id="o-angle" /> The angle to the
+            radius</label
+          >
+          <label class="opt" id="squares-opt"
+            ><input type="checkbox" id="o-squares" /> The Fibonacci
+            squares</label
+          >
+          <label class="opt" id="nature-opt"
+            ><input type="checkbox" id="o-nature" /> Draw nature's forms</label
+          >
+          <label class="opt"
+            ><input type="checkbox" id="o-anim" /> Draw them in</label
+          >
+        </div>
+
+        <div class="tool wide">
+          <h3>In the gallery</h3>
+          <div class="chips picks" id="picks" role="group" aria-label="Spirals"></div>
+          <div class="btns">
+            <button type="button" id="all" class="ghost">All eight</button>
+            <button type="button" id="math-only" class="ghost">
+              Only the maths
+            </button>
+            <button type="button" id="nature-only" class="ghost">
+              Only nature
+            </button>
+            <button type="button" id="export-png">Download PNG</button>
+            <button type="button" id="export-svg" class="ghost">
+              Download SVG
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="app">
+        <div class="grid" id="gallery"></div>
+
+        <div class="layout" id="overlay" hidden>
+          <div class="stage">
+            <div id="overlay-art" class="canvas-box" aria-label="The spirals, one on top of another"></div>
+            <p class="note">
+              All of them on one center, each scaled to end on the dotted
+              circle. The three of nature are dashed. Every curve starts on the
+              ray going right.
+            </p>
+          </div>
+          <div class="side">
+            <div class="panel">
+              <h3>Each turn, crossing the ray</h3>
+              <div id="rulers"></div>
+              <p class="note" style="margin: 12px 0 0">
+                A tick wherever the curve comes back round to the ray it started
+                on, from the center on the left to the rim on the right. Even
+                ticks, bunching ticks, ticks that spread apart: that is the
+                whole difference between these curves, in one line each.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tablebox" id="table"></div>
+      <p class="note tablenote">
+        The logarithmic family holds the same angle to the radius everywhere
+        &mdash; that is what equiangular means, and the growth per turn is the
+        same anywhere along the curve. For the Archimedean and Fermat spirals
+        the figures are read at the outer end, and both keep changing: wind them
+        out further and the angle climbs toward 90&deg; while the growth per
+        turn falls toward 1. The Fibonacci chain has no single angle at all, so
+        the range along its last turn is given instead. Pitch is simply 90&deg;
+        less the angle to the radius; it is the way astronomers quote a galaxy.
+      </p>
+
+      <div class="layout info">
+        <div class="side wide">
+          <div class="panel">
+            <h3>What tells them apart</h3>
+            <p class="note">
+              Draw the radius out to a point on a spiral and then the tangent
+              there, and measure between them. For the logarithmic spiral that
+              angle is the same at every point, near the middle or far out, and
+              it fixes everything else: the curve is a scaled copy of itself,
+              and the radius multiplies by the same factor on every turn.
+              Archimedes' spiral instead adds the same length each turn, so its
+              angle starts near zero and climbs; Fermat's adds the same
+              <em>area</em>, so its turns crowd together. Turn on the angle
+              markers and watch which of the three reads the same number at all
+              three radii.
+            </p>
+          </div>
+        </div>
+        <div class="side wide">
+          <div class="panel">
+            <h3>The nautilus is not the golden spiral</h3>
+            <p class="note">
+              Both are logarithmic, and there the resemblance stops. The golden
+              spiral multiplies its radius by &phi;&#8308; = 6.854 every turn.
+              Measured nautilus shells come in near 3.2, which is roughly the
+              value that makes each whorl sit against the one before it &mdash;
+              a shell built to 6.854 would fly apart into a loose coil with
+              nothing to hold it. Put the two cards next to each other, or
+              overlay them, and the claim does not survive the picture.
+            </p>
+          </div>
+        </div>
+        <div class="side wide">
+          <div class="panel">
+            <h3>Why living things keep picking one</h3>
+            <p class="note">
+              A nautilus cannot rebuild its shell as it grows, so it adds to the
+              open end instead; a horn and a tusk do the same thing, and so does
+              a claw. If each new piece is a scaled copy of the last, the only
+              curve the result can follow is the logarithmic one. A galaxy
+              arrives at it from the other direction: the arms are a density
+              wave in a disc whose rotation is nearly flat, and that winds a
+              pattern up at a constant pitch. Same curve, different reason.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>
+          The code of this page is
+          <a href="https://github.com/evoluteur/spiral-gallery">Open source</a>
+          with MIT license.
+        </p>
+        <p>
+          Had fun browsing the app?
+          <a href="https://github.com/sponsors/evoluteur"
+            >Buy me a coffee by becoming a sponsor</a
+          >.
+        </p>
+        <p>
+          You may also like
+          <a href="https://evoluteur.github.io/archimedean-solids/"
+            >Archimedean Solids</a
+          >,
+          <a href="https://evoluteur.github.io/sacred-geometry/"
+            >Sacred Geometry</a
+          >,
+          <a href="https://evoluteur.github.io/cymatics/">Cymatics</a>, and
+          <a href="https://evoluteur.github.io/celtic-knot-maker/"
+            >Celtic Knot Maker</a
+          >. See them all on
+          <a href="https://evoluteur.github.io/esoterica.html">Esoterica</a>.
+        </p>
+        <p class="copyright">
+          &#169; 2026
+          <a href="https://evoluteur.github.io/">Olivier Giulieri</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
