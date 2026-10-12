@@ -44,6 +44,6 @@ Spiral-Gallery is open source at [GitHub](https://github.com/evoluteur/spiral-ga
 
 Had fun browsing the app? [Buy me a coffee by becoming a sponsor](https://github.com/sponsors/evoluteur).
 
-You may also be interested in [Archimedean-Solids](https://github.com/evoluteur/archimedean-solids) ([demo](https://evoluteur.github.io/archimedean-solids/)), [Sacred-Geometry](https://github.com/evoluteur/sacred-geometry) ([demo](https://evoluteur.github.io/sacred-geometry/)), [Cymatics](https://github.com/evoluteur/cymatics) ([demo](https://evoluteur.github.io/cymatics/)) and [Celtic-Knot-Maker](https://github.com/evoluteur/celtic-knot-maker) ([demo](https://evoluteur.github.io/celtic-knot-maker/)). For more mystic arts as small web apps, see [Esoterica](https://evoluteur.github.io/esoterica.html).
+You may also be interested in [Sacred-Geometry](https://github.com/evoluteur/sacred-geometry) ([demo](https://evoluteur.github.io/sacred-geometry/)), [Sunflower-Golden-Angle](https://github.com/evoluteur/sunflower-golden-angle) ([demo](https://evoluteur.github.io/sunflower-golden-angle/)), [Platonic-Solids](https://github.com/evoluteur/platonic-solids) ([demo](https://evoluteur.github.io/platonic-solids/)) and [Labyrinth-Maker](https://github.com/evoluteur/labyrinth-maker) ([demo](https://evoluteur.github.io/labyrinth-maker/)). For more mystic arts as small web apps, see [Esoterica](https://evoluteur.github.io/esoterica.html).
 
 Copyright (c) 2026 [Olivier Giulieri](https://evoluteur.github.io/).
