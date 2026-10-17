@@ -172,7 +172,7 @@ const KEYS = Object.keys(SPIRALS);
 // ---------------------------------------------------------------- options
 
 const opts = {
-  view: "gallery",
+  view: "cards", // cards, images (the spirals alone) or overlay
   turns: 3.5,
   growth: 2.4, // growth per turn of the plain logarithmic spiral
   width: 3,
@@ -652,26 +652,32 @@ function tableHtml() {
 
 // ---------------------------------------------------------------- export
 
-// the gallery as one sheet: the drawings in a grid, each with its name
-function sheetSvg() {
+// the gallery as one sheet: the drawings in a grid, each with its name. It is
+// also the images view, on the page (onPage): no title, and the names in the
+// ink of the colors (white on the dark ones) rather than in each spiral's color.
+function sheetSvg(onPage) {
   const L = LOOKS[opts.look];
-  if (opts.view === "overlay") return overlaySvg(false);
+  if (!onPage && opts.view === "overlay") return overlaySvg(false);
+  const images = onPage || opts.view === "images";
   const keys = shown();
   const F0 = frame(1, 26, 11);
   const cols = Math.min(4, Math.max(1, keys.length));
   const rows = Math.ceil(keys.length / cols);
-  const gap = 14, lab = 26, top = 54;
+  const gap = 14, lab = 26, top = onPage ? gap : 54;
   const tw = F0.vb + gap, th = F0.vb + lab + gap;
   const W = cols * tw + gap, H = top + rows * th + gap;
-  let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">`;
+  let s =
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}"` +
+    (onPage ? ' class="plain"' : ` width="${W}" height="${H}"`) +
+    `>`;
   s += `<rect width="${W}" height="${H}" fill="${L.bg}"/>`;
-  s += text(gap + 4, 30, "Spiral Gallery", L.ink, 24, "start");
+  if (!onPage) s += text(gap + 4, 30, "Spiral Gallery", L.ink, 24, "start");
   keys.forEach((key, i) => {
     const x = gap + (i % cols) * tw, y = top + Math.floor(i / cols) * th;
     const geo = geometry(key);
     const Fk = frame(geo.k, 26, 11);
     s += `<g transform="translate(${x} ${y})">${spiralArt(geo, Fk)}`;
-    s += text(Fk.c, Fk.vb + 12, SPIRALS[key].name, colorOf(key), 13, "middle");
+    s += text(Fk.c, Fk.vb + 12, SPIRALS[key].name, images ? L.ink : colorOf(key), 13, "middle");
     s += "</g>";
   });
   return s + "</svg>";
@@ -703,11 +709,15 @@ function savePng() {
 // ---------------------------------------------------------------- render
 
 function render() {
-  const gallery = opts.view === "gallery";
-  $e("gallery").hidden = !gallery;
-  $e("overlay").hidden = gallery;
-  if (gallery) {
+  const v = opts.view;
+  $e("gallery").hidden = v !== "cards";
+  $e("sheet").hidden = v !== "images";
+  $e("overlay").hidden = v !== "overlay";
+  if (v === "cards") {
     $e("gallery").innerHTML = shown().map(card).join("");
+  } else if (v === "images") {
+    $e("sheet").innerHTML = sheetSvg(true);
+    $e("sheet").style.backgroundColor = LOOKS[opts.look].bg;
   } else {
     $e("overlay-art").innerHTML = overlaySvg(true);
     $e("overlay-art").style.backgroundColor = LOOKS[opts.look].bg;
@@ -739,7 +749,7 @@ function writeUrl() {
 function readUrl() {
   const q = new URLSearchParams(location.hash.slice(1));
   if (!q.get("show")) return;
-  if (q.get("view") === "overlay") opts.view = "overlay";
+  if (VIEWS[q.get("view")]) opts.view = q.get("view");
   const t = parseFloat(q.get("turns")), g = parseFloat(q.get("growth"));
   if (t >= 1 && t <= 8) opts.turns = t;
   if (g >= 1.1 && g <= 8) opts.growth = g;
@@ -748,6 +758,8 @@ function readUrl() {
   if (sh.length === KEYS.length) KEYS.forEach((k, i) => (opts.show[k] = sh[i] === "1"));
   if (!shown().length) opts.show[KEYS[0]] = true;
 }
+
+const VIEWS = { cards: { name: "Cards" }, images: { name: "Side by side" }, overlay: { name: "Overlay" } };
 
 const LS = "spiral-gallery";
 function saveSettings() {
@@ -763,7 +775,7 @@ function loadSettings() {
     if (saved) Object.assign(opts, saved, { show: { ...def, ...saved.show } });
   } catch (e) {}
   if (!LOOKS[opts.look]) opts.look = "night";
-  if (opts.view !== "overlay") opts.view = "gallery";
+  if (!VIEWS[opts.view]) opts.view = "cards"; // "gallery" before there were three views
   if (!shown().length) opts.show[KEYS[0]] = true;
 }
 function update() {
@@ -811,7 +823,7 @@ function checkCtl(id, key) {
 function initSpirals() {
   loadSettings();
   readUrl();
-  chips("view-chips", { gallery: { name: "Gallery" }, overlay: { name: "Overlay" } }, "view", update);
+  chips("view-chips", VIEWS, "view", update);
   chips("look-chips", LOOKS, "look", update);
   $e("picks").onclick = (e) => {
     const b = e.target.closest("button");

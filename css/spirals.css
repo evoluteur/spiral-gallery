@@ -63,6 +63,15 @@ svg.rbar:hover {
 
 /* ---------------------------------------------------------------- the gallery */
 
+/* Cards, Images or Overlay, above the spirals */
+.chips.view-toggle {
+  margin: 0 0 14px;
+}
+/* the images view: one large picture of all the spirals, with their names */
+.sheet {
+  margin: 0 0 24px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
